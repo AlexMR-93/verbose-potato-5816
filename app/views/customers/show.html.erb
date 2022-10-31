@@ -5,5 +5,11 @@ Name:<%= @customer.name %>
   <%@customer.items.each do |i| %>
     <p><%= i.name %> Price:<%=i.price %></p>
     <p> <%= i.supermarket.name %> </p>
-  
+
+    <% end %>
+    <h1>Add new Item </h1>
+    <%= form_with url: "/customers/#{@customer.id}/items", method: :post, local: true do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= f.submit %>
     <% end %>

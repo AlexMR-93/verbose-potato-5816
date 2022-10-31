@@ -23,4 +23,15 @@ RSpec.describe("Customer Show page") do
       end
     end
   end
+
+  describe("form to add an item to this cx") do
+    describe("fill in form, redirected back to cx show page") do
+      it(" Now i see item listed under this cx items ") do
+        visit("/customers/#{@customer1.id}")
+        fill_in("Name",         with: "Orange")
+        click_button("Save")
+        expect(page).to(have_current_path("/customers/#{@customer1.id}/items"))
+      end
+    end
+  end
 end
